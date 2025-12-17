@@ -1,3 +1,10 @@
+/*
+FILE: main.c
+
+DESCRIPTION:
+
+*/
+
 // Includes
 #include <SDL3/SDL.h>
 

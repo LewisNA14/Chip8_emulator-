@@ -1,6 +1,9 @@
 /*
-FILE
-This file is the header for the CPU Source File declaring all the necessary interfaces
+FILE: cpu.h
+
+This file is the header for the CPU Source File declaring all 
+the necessary interfaces
+
 DESCRIPTION
 */
 
@@ -31,9 +34,12 @@ typedef struct{
 } CPU;
 
 // Function Prototypes
-void cpu_initialise(CPU* cpu);
-void cpu_fetch(CPU* cpu);
-void cpu_decode(CPU* cpu);
-void cpu_execute(CPU* cpu);
+void cpu_initialise(CPU* cpu);      // initialises CPU registers, stack, timers etc
+void cpu_fetch(CPU* cpu);           // Fetches instructions from ROM
+void cpu_decode(CPU* cpu);          // Decodes the instructions from ROM
+void cpu_execute(CPU* cpu);         // Executes the instructions from ROM
+void cpu_update_timers(CPU* cpu);   // Updates the delay and Sound timers
+void keyboard_input(CPU* cpu);      // Reads keyboard inputs
+void Drawing_Op();                  // Draws the sprites and other things for PPU
 
 #endif
