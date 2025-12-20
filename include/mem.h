@@ -6,24 +6,28 @@ DESCRIPTION
 Contains the Memory size among other things to replicate hardware specs
 */
 
-#include <stdio.h>
-#include <stdint.h>
-
 #ifndef MEM_H
 #define MEM_H
 
-// Declarations
+#include <stdio.h>
+#include <stdint.h>
+
+// Memory
+#define MEMORY_MAX_SIZE 4096                
+#define PROGRAM_START   0x200               // Programs starting address
+extern uint16_t memory[MEMORY_MAX_SIZE];  // Memory Buffer
+
+// ROM
 #define ROM_MAX_SIZE 4096
-#define MEMORY_MAX_SIZE 4096
+extern uint16_t rom[ROM_MAX_SIZE];        // ROM Buffer
+extern uint16_t rom_size;                 // number of bytes loaded
+extern FILE *rom_fp;                      // ROM file pointer
 
-extern uint8_t memory[MEMORY_MAX_SIZE];        // Full Memory Size
-extern uint8_t rom[ROM_MAX_SIZE];    // Full ROM array
-extern uint8_t rom_size;            // acts as a index
+// Function prototypes
+void read_rom(void);
+void load_rom(const uint8_t *rom_bytes, uint16_t rom_len); // load ROM into buffer
+void map_rom_to_memory(void);                                // copy ROM into memory
+void clear_mem(void);                                        // clear memory
 
-// Function Prototypes
-void write_mem();        // Write to Memory
-void read_mem();         // Read from Memory
-void clear_mem();        // Delete / Clear Memory
 
 #endif
-
